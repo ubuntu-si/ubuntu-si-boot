@@ -1,5 +1,5 @@
 iso:
-	mkdir iso
+	mkdir iso -p
 	
 	rm -rf DVD/casper64
 	sudo mount -t iso9660 -o loop ../ubuntu-64bit-iso/dist64/binary-hybrid.iso ./iso
