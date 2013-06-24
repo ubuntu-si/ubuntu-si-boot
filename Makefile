@@ -2,18 +2,18 @@ iso:
 	mkdir iso
 	
 	rm -rf DVD/casper64
-	mount -t iso9660 -o loop ../ubuntu-64bit-iso/dist64/binary-hybrid.iso ./iso
+	sudo mount -t iso9660 -o loop ../ubuntu-64bit-iso/dist64/binary-hybrid.iso ./iso
 	mkdir DVD/casper64 -p
 	cp iso/casper/* DVD/casper64/ -R
 	sync
-	umount ./iso
+	sudo umount ./iso
 	
 	rm -rf DVD/casper
-	mount -t iso9660 -o loop ../ubuntu-32bit-iso/dist32/binary-hybrid.iso ./iso
+	sudo mount -t iso9660 -o loop ../ubuntu-32bit-iso/dist32/binary-hybrid.iso ./iso
 	mkdir DVD/casper -p
 	cp iso/casper/* DVD/casper/ -R
 	sync
-	umount ./iso
+	sudo umount ./iso
 	
 	rm -rf iso
 	
