@@ -1,23 +1,20 @@
 iso:
-	mkdir iso -p
+	rm -rf DVD/.disk
+	mkdir DVD/.disk -p
 	
 	rm -rf DVD/casper64
-	sudo mount -t iso9660 -o loop ../ubuntu-64bit-iso/dist64/binary-hybrid.iso ./iso
 	mkdir DVD/casper64 -p
-	cp iso/casper/* DVD/casper64/ -R
+	cp ../ubuntu-64bit-iso/dist64/binary/casper/* DVD/casper64/ -R
+	cp ../ubuntu-64bit-iso/dist64/binary/.disk/* DVD/.disk/ -Rf
 	sync
-	sudo umount ./iso
 	
 	rm -rf DVD/casper
-	sudo mount -t iso9660 -o loop ../ubuntu-32bit-iso/dist32/binary-hybrid.iso ./iso
 	mkdir DVD/casper -p
-	cp iso/casper/* DVD/casper/ -R
+	cp ../ubuntu-32bit-iso/dist32/binary/casper/* DVD/casper/ -R
+	cp ../ubuntu-32bit-iso/dist32/binary/.disk/* DVD/.disk/ -Rf
 	sync
-	sudo umount ./iso
-	
-	rm -rf iso
-	
-	rm output.iso
+		
+	rm -f output.iso
 	genisoimage -o ./output.iso \
 	-no-emul-boot -boot-load-size 4 -boot-info-table \
 	-r -b isolinux/isolinux.bin -c isolinux/boot.cat -J -l -cache-inodes -allow-multidot \
@@ -27,7 +24,6 @@ iso:
 	-x ./DVD/casper/filesystem.manifest \
 	-joliet-long -input-charset utf-8 \
 	./DVD
-	isohybrid output.iso
 
 test:
 	kvm -m 1024 -cdrom output.iso -boot d
