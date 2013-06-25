@@ -2,16 +2,16 @@ iso:
 	rm -rf DVD/.disk
 	mkdir DVD/.disk -p
 	
-	rm -rf DVD/casper64
-	mkdir DVD/casper64 -p
-	cp ../ubuntu-64bit-iso/dist64/binary/casper/* DVD/casper64/ -R
-	cp ../ubuntu-64bit-iso/dist64/binary/.disk/* DVD/.disk/ -Rf
+	sudo rm -rf DVD/casper64
+	sudo mkdir DVD/casper64 -p
+	sudo cp ../ubuntu-64bit-iso/dist64/binary/casper/* DVD/casper64/ -R
+	sudo cp ../ubuntu-64bit-iso/dist64/binary/.disk/* DVD/.disk/ -Rf
 	sync
 	
-	rm -rf DVD/casper
-	mkdir DVD/casper -p
-	cp ../ubuntu-32bit-iso/dist32/binary/casper/* DVD/casper/ -R
-	cp ../ubuntu-32bit-iso/dist32/binary/.disk/* DVD/.disk/ -Rf
+	sudo rm -rf DVD/casper
+	sudo mkdir DVD/casper -p
+	sudo cp ../ubuntu-32bit-iso/dist32/binary/casper/* DVD/casper/ -R
+	sudo cp ../ubuntu-32bit-iso/dist32/binary/.disk/* DVD/.disk/ -Rf
 	sync
 		
 	rm -f output.iso
