@@ -13,7 +13,8 @@ iso:
 	sudo cp ../ubuntu-32bit-iso/dist32/binary/casper/* DVD/casper/ -R
 	sudo cp ../ubuntu-32bit-iso/dist32/binary/.disk/* DVD/.disk/ -Rf
 	sync
-		
+	sudo chown jenkins:jenkins DVD -R
+	
 	rm -f output.iso
 	genisoimage -o ./output.iso \
 	-no-emul-boot -boot-load-size 4 -boot-info-table \
